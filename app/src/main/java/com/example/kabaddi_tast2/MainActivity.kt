@@ -1,5 +1,6 @@
 package com.example.kabaddi_tast2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -36,6 +37,17 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: FunctionHolder, position: Int) {
             holder.nameText.text = functions.get(position)
+            holder.itemView.setOnClickListener {
+                functionsClicked(position)
+            }
+        }
+    }
+
+    private fun functionsClicked(position: Int) {
+        when(position){
+            0 -> startActivity(Intent(this,RecordActivity::class.java))
+            1 -> startActivity(Intent(this,RecordLiestActivity::class.java))
+            else -> return
         }
     }
 
